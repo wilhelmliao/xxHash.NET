@@ -490,6 +490,21 @@ namespace Extensions.Data
 
             InternalResetState32(state, seed);
         }
+        static public bool UpdateState32(State32 state, byte[] input)
+        {
+            if (state == null)
+                throw new ArgumentNullException("state");
+            if (!state.IsInitialized)
+                ThrowStateUninitialized("state");
+            if (input == null)
+                throw new ArgumentNullException("input");
+            if (input.Rank != 1)
+                ThrowArrayMultiRank("input");
+            if (input.GetLowerBound(0) != 0)
+                ThrowArrayNonZeroLowerBound("input");
+
+            return (ErrorCode.XXH_OK == InternalUpdateState32(state, input, 0, input.Length));
+        }
         static public bool UpdateState32(State32 state, byte[] input, int offset, int length)
         {
             if (state == null)
@@ -527,6 +542,21 @@ namespace Extensions.Data
                 throw new ArgumentNullException("state");
 
             InternalResetState64(state, seed);
+        }
+        static public bool UpdateState64(State64 state, byte[] input)
+        {
+            if (state == null)
+                throw new ArgumentNullException("state");
+            if (!state.IsInitialized)
+                ThrowStateUninitialized("state");
+            if (input == null)
+                throw new ArgumentNullException("input");
+            if (input.Rank != 1)
+                ThrowArrayMultiRank("input");
+            if (input.GetLowerBound(0) != 0)
+                ThrowArrayNonZeroLowerBound("input");
+
+            return (ErrorCode.XXH_OK == InternalUpdateState64(state, input, 0, input.Length));
         }
         static public bool UpdateState64(State64 state, byte[] input, int offset, int length)
         {
