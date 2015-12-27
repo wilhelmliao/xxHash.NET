@@ -62,6 +62,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #undef  EnableSimpleVersion  // EnableSimpleVersion off
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Extensions.Data
@@ -131,6 +132,24 @@ namespace Extensions.Data
 
             return XXH32(input, 0, input.Length, seed);
         }
+        static public uint  XXH32(Stream inputStream)
+        {
+            return XXH32(inputStream, 0U);
+        }
+        static public uint  XXH32(Stream inputStream, uint seed)
+        {
+            State32 state = new State32();
+            try
+            {
+                ResetState32(state, seed);
+                UpdateState32(state, inputStream);
+                return DigestState32(state);
+            }
+            catch
+            {
+                throw;
+            }
+        }
         static public ulong XXH64(byte[] input)
         {
             return XXH64(input, 0UL);
@@ -141,6 +160,24 @@ namespace Extensions.Data
                 throw new ArgumentNullException("input");
 
             return XXH64(input, 0, input.Length, seed);
+        }
+        static public ulong XXH64(Stream inputStream)
+        {
+            return XXH64(inputStream, 0U);
+        }
+        static public ulong XXH64(Stream inputStream, uint seed)
+        {
+            State64 state = new State64();
+            try
+            {
+                ResetState64(state, seed);
+                UpdateState64(state, inputStream);
+                return DigestState64(state);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         /*
@@ -526,6 +563,26 @@ namespace Extensions.Data
 
             return (ErrorCode.XXH_OK == InternalUpdateState32(state, input, offset, length));
         }
+        static public bool UpdateState32(State32 state, Stream inputStream)
+        {
+            if (inputStream == null)
+                throw new ArgumentNullException("inputStream");
+
+            byte[] buffer = new byte[0x1000];
+            int size;
+            do
+            {
+                size = inputStream.Read(buffer, 0, 0x1000);
+                if (size > 0)
+                {
+                    if (InternalUpdateState32(state, buffer, 0, size) != ErrorCode.XXH_OK)
+                    {
+                        return false;
+                    }
+                }
+            } while (size > 0);
+            return true;
+        }
         static public uint DigestState32(State32 state)
         {
             if (state == null)
@@ -578,6 +635,26 @@ namespace Extensions.Data
                 ThrowArrayInvalidOffsetAndLength();
 
             return (ErrorCode.XXH_OK == InternalUpdateState64(state, input, offset, length));
+        }
+        static public bool UpdateState64(State64 state, Stream inputStream)
+        {
+            if (inputStream == null)
+                throw new ArgumentNullException("inputStream");
+
+            byte[] buffer = new byte[0x1000];
+            int size;
+            do
+            {
+                size = inputStream.Read(buffer, 0, 0x1000);
+                if (size > 0)
+                {
+                    if (InternalUpdateState64(state, buffer, 0, size) != ErrorCode.XXH_OK)
+                    {
+                        return false;
+                    }
+                }
+            } while (size > 0);
+            return true;
         }
         static public ulong DigestState64(State64 state)
         {
