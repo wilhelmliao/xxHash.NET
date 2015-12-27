@@ -47,8 +47,11 @@ using (HashAlgorithm xxh32 = XXHash32.Create())
 
 
 The assembly provides majority implementation of xxHash APIs.
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a740e1d5e54ef4a2671bb45018e6a3138b52367e
 | original xxHash API name | XXH32             | XXH64             |
 |--------------------------|-------------------|-------------------|
 | XXH*nn*                  | XXH32()           | XXH64()           |
