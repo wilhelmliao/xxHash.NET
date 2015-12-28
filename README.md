@@ -4,7 +4,7 @@ A .NET implementation of [xxHash](https://github.com/Cyan4973/xxHash).
 
 ### Synopsis ###
 
-##### xxHash API approach #####
+#### xxHash API approach ####
 *The following snippet demonstrates computing the `XXH32` hash value of the input string "test".*
 ```csharp
 byte[] input = Encoder.ASCII.GetBytes("test");      // the data to be hashed
@@ -26,37 +26,44 @@ UpdateState32(state, stream);                       // puts the file stream into
 uint result = DigestState32(state);                 // compute the XXH32 hash value.
 ```
 
-##### HashAlgorithm approach #####
-*In addition, the assembly also provides two classes -- `XXHash32` and `XXHash64` derive from System.Security.Cryptography.HashAlgorithm.*
-```csharp
-byte[] input = Encoder.ASCII.GetBytes("test");       // the data to be hashed.
-using (HashAlgorithm xxh32 = XXHash32.Create())
-{
-  byte[] result = xxh32.ComputeHash(input);          // compute the hash.
-}
-```
-or
-```csharp
-byte[] input = Encoder.ASCII.GetBytes("test");       // the data to be hashed
-using (HashAlgorithm xxh32 = XXHash32.Create())
-{
-  xxh32.TransformFinalBlock(input, 0, input.Length);
-  byte[] result = xxh32.Hash;                        // retrieves the hash value.
-}
-```
-
-
-##### Supported xxHash APIs: #####
+###### Supported xxHash APIs: ######
 
 | original xxHash API name | XXH32             | XXH64             |
 |--------------------------|-------------------|-------------------|
 | XXH*nn*()                | XXH32()           | XXH64()           |
 | XXH*nn*_state_t          | State32           | State64           |
 | XXH*nn*_createState()    | CreateState32()   | CreateState64()   |
-| XXH*nn*_freeState()      | *not implement*   | *not implement*   |
+| XXH*nn*_freeState()      | *Not implemented* | *Not implemented* |
 | XXH*nn*_reset()          | ResetState32()    | ResetState64()    |
 | XXH*nn*_update()         | UpdateState32()   | UpdateState64()   |
 | XXH*nn*_digest()         | DigestState32()   | DigestState64()   |
+
+#### HashAlgorithm approach ####
+In addition, the assembly also provides `XXHash32` and `XXHash64` the two implementation classes of *System.Security.Cryptography.HashAlgorithm*.
+
+*The following snippets demonstrate computing the `XXH32` hash value with HashAlgorithm approach.*
+```csharp
+byte[] input = Encoder.ASCII.GetBytes("test");         // the data to be hashed.
+using (HashAlgorithm xxhash = XXHash32.Create())
+{
+  byte[] result = xxhash.ComputeHash(input);           // compute the hash.
+}
+```
+-- *or* --
+```csharp
+byte[] input = Encoder.ASCII.GetBytes("test");         // the data to be hashed
+using (HashAlgorithm xxhash = XXHash32.Create())
+{
+  xxhash.TransformFinalBlock(input, 0, input.Length);
+  byte[] result = xxhash.Hash;                         // retrieves the hash value.
+}
+```
+**NOTE:** XXH64 is also supported: you can use `xxHash64` class instead of `xxHash32`.
+
+
+
+#### Versioning ####
+[v1.0](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0) (equal to [xxHash r42](https://github.com/Cyan4973/xxHash/releases/tag/r42))
 
 -----------
 
