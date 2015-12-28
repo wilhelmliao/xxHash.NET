@@ -25,7 +25,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-- xxHash, located at xxhash.*. xxHash's License follows:
+- Original xxHash's License follows:
 """
   Copyright (C) 2012-2015, Yann Collet. (https://github.com/Cyan4973/xxHash)
 
