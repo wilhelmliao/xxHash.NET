@@ -1,4 +1,4 @@
-xxHash.NET [![Build Status](https://travis-ci.org/wilhelmliao/xxHash.NET.svg?branch=master)](https://travis-ci.org/wilhelmliao/xxHash.NET)
+xxHash.NET [![Build Status](https://travis-ci.org/wilhelmliao/xxHash.NET.svg?branch=master)](https://travis-ci.org/wilhelmliao/xxHash.NET) [![NuGet version](https://badge.fury.io/nu/xxHash.NET.svg)](https://badge.fury.io/nu/xxHash.NET)
 ==========
 A .NET implementation of [xxHash](https://github.com/Cyan4973/xxHash). 
 
