@@ -1,7 +1,7 @@
 ﻿/*
 Created by Wilhelm Liao on 2015-12-25.
 
-Copyright (c) 2015, Wilhelm Liao
+Copyright (c) 2015, Wilhelm Liao. (https://github.com/wilhelmliao/xxHash.NET)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -76,14 +76,14 @@ namespace Extensions.Data
         const uint PRIME32_1 = 2654435761U,
                    PRIME32_2 = 2246822519U,
                    PRIME32_3 = 3266489917U,
-                   PRIME32_4 = 668265263U,
-                   PRIME32_5 = 374761393U;
+                   PRIME32_4 =  668265263U,
+                   PRIME32_5 =  374761393U;
 
         const ulong PRIME64_1 = 11400714785074694791UL,
                     PRIME64_2 = 14029467366897019727UL,
-                    PRIME64_3 = 1609587929392839161UL,
-                    PRIME64_4 = 9650029242287828579UL,
-                    PRIME64_5 = 2870177450012600261UL;
+                    PRIME64_3 =  1609587929392839161UL,
+                    PRIME64_4 =  9650029242287828579UL,
+                    PRIME64_5 =  2870177450012600261UL;
 
         /*****************************
         *  Definitions
@@ -233,19 +233,19 @@ namespace Extensions.Data
                 do
                 {
                     v1 += p.ReadUInt32() * PRIME32_2;
-                    v1 = XXH_rotl32(v1, 13);
+                    v1  = XXH_rotl32(v1, 13);
                     v1 *= PRIME32_1;
 
                     v2 += p.ReadUInt32() * PRIME32_2;
-                    v2 = XXH_rotl32(v2, 13);
+                    v2  = XXH_rotl32(v2, 13);
                     v2 *= PRIME32_1;
 
                     v3 += p.ReadUInt32() * PRIME32_2;
-                    v3 = XXH_rotl32(v3, 13);
+                    v3  = XXH_rotl32(v3, 13);
                     v3 *= PRIME32_1;
 
                     v4 += p.ReadUInt32() * PRIME32_2;
-                    v4 = XXH_rotl32(v4, 13);
+                    v4  = XXH_rotl32(v4, 13);
                     v4 *= PRIME32_1;
                 }
                 while (p.Position <= limit);
@@ -317,19 +317,19 @@ namespace Extensions.Data
                 do
                 {
                     v1 += p.ReadUInt64() * PRIME64_2;
-                    v1 = XXH_rotl64(v1, 31);
+                    v1  = XXH_rotl64(v1, 31);
                     v1 *= PRIME64_1;
 
                     v2 += p.ReadUInt64() * PRIME64_2;
-                    v2 = XXH_rotl64(v2, 31);
+                    v2  = XXH_rotl64(v2, 31);
                     v2 *= PRIME64_1;
 
                     v3 += p.ReadUInt64() * PRIME64_2;
-                    v3 = XXH_rotl64(v3, 31);
+                    v3  = XXH_rotl64(v3, 31);
                     v3 *= PRIME64_1;
 
                     v4 += p.ReadUInt64() * PRIME64_2;
-                    v4 = XXH_rotl64(v4, 31);
+                    v4  = XXH_rotl64(v4, 31);
                     v4 *= PRIME64_1;
                 }
                 while (p.Position <= limit);
@@ -337,28 +337,28 @@ namespace Extensions.Data
                 h64 = XXH_rotl64(v1, 1) + XXH_rotl64(v2, 7) + XXH_rotl64(v3, 12) + XXH_rotl64(v4, 18);
 
                 v1 *= PRIME64_2;
-                v1 = XXH_rotl64(v1, 31);
+                v1  = XXH_rotl64(v1, 31);
                 v1 *= PRIME64_1;
                 h64 ^= v1;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
+                h64  = h64 * PRIME64_1 + PRIME64_4;
 
                 v2 *= PRIME64_2;
-                v2 = XXH_rotl64(v2, 31);
+                v2  = XXH_rotl64(v2, 31);
                 v2 *= PRIME64_1;
                 h64 ^= v2;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
+                h64  = h64 * PRIME64_1 + PRIME64_4;
 
                 v3 *= PRIME64_2;
-                v3 = XXH_rotl64(v3, 31);
+                v3  = XXH_rotl64(v3, 31);
                 v3 *= PRIME64_1;
                 h64 ^= v3;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
+                h64  = h64 * PRIME64_1 + PRIME64_4;
 
                 v4 *= PRIME64_2;
-                v4 = XXH_rotl64(v4, 31);
+                v4  = XXH_rotl64(v4, 31);
                 v4 *= PRIME64_1;
                 h64 ^= v4;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
+                h64  = h64 * PRIME64_1 + PRIME64_4;
             }
             else
             {
@@ -371,22 +371,22 @@ namespace Extensions.Data
             {
                 ulong k1 = p.ReadUInt64();
                 k1 *= PRIME64_2;
-                k1 = XXH_rotl64(k1, 31);
+                k1  = XXH_rotl64(k1, 31);
                 k1 *= PRIME64_1;
                 h64 ^= k1;
-                h64 = XXH_rotl64(h64, 27) * PRIME64_1 + PRIME64_4;
+                h64  = XXH_rotl64(h64, 27) * PRIME64_1 + PRIME64_4;
             }
 
             if (p.Position + 4 <= bEnd)
             {
                 h64 ^= (ulong)(p.ReadUInt32()) * PRIME64_1;
-                h64 = XXH_rotl64(h64, 23) * PRIME64_2 + PRIME64_3;
+                h64  = XXH_rotl64(h64, 23) * PRIME64_2 + PRIME64_3;
             }
 
             while (p.Position < bEnd)
             {
                 h64 ^= p.ReadByte() * PRIME64_5;
-                h64 = XXH_rotl64(h64, 11) * PRIME64_1;
+                h64  = XXH_rotl64(h64, 11) * PRIME64_1;
             }
 
             h64 ^= h64 >> 33;
@@ -568,11 +568,11 @@ namespace Extensions.Data
             if (inputStream == null)
                 throw new ArgumentNullException("inputStream");
 
-            byte[] buffer = new byte[0x1000];
+            byte[] buffer = new byte[0x2000];
             int size;
             do
             {
-                size = inputStream.Read(buffer, 0, 0x1000);
+                size = inputStream.Read(buffer, 0, 0x2000);
                 if (size > 0)
                 {
                     if (InternalUpdateState32(state, buffer, 0, size) != ErrorCode.XXH_OK)
@@ -641,11 +641,11 @@ namespace Extensions.Data
             if (inputStream == null)
                 throw new ArgumentNullException("inputStream");
 
-            byte[] buffer = new byte[0x1000];
+            byte[] buffer = new byte[0x2000];
             int size;
             do
             {
-                size = inputStream.Read(buffer, 0, 0x1000);
+                size = inputStream.Read(buffer, 0, 0x2000);
                 if (size > 0)
                 {
                     if (InternalUpdateState64(state, buffer, 0, size) != ErrorCode.XXH_OK)
@@ -696,21 +696,10 @@ namespace Extensions.Data
                 Array.Copy(input, offset, state.mem32, state.memsize, 16 - state.memsize);
                 {
                     InputTextStream p32 = new InputTextStream(state.mem32, (int)state.memsize);
-                    state.v1 += p32.ReadUInt32() * PRIME32_2;
-                    state.v1 = XXH_rotl32(state.v1, 13);
-                    state.v1 *= PRIME32_1;
-
-                    state.v2 += p32.ReadUInt32() * PRIME32_2;
-                    state.v2 = XXH_rotl32(state.v2, 13);
-                    state.v2 *= PRIME32_1;
-
-                    state.v3 += p32.ReadUInt32() * PRIME32_2;
-                    state.v3 = XXH_rotl32(state.v3, 13);
-                    state.v3 *= PRIME32_1;
-
-                    state.v4 += p32.ReadUInt32() * PRIME32_2;
-                    state.v4 = XXH_rotl32(state.v4, 13);
-                    state.v4 *= PRIME32_1;
+                    state.v1 = XXH32_round(state.v1, p32.ReadUInt32());
+                    state.v2 = XXH32_round(state.v2, p32.ReadUInt32());
+                    state.v3 = XXH32_round(state.v3, p32.ReadUInt32());
+                    state.v4 = XXH32_round(state.v4, p32.ReadUInt32());
                 }
                 p.Skip(16 - (int)state.memsize);
                 state.memsize = 0;
@@ -726,21 +715,10 @@ namespace Extensions.Data
 
                 do
                 {
-                    v1 += p.ReadUInt32() * PRIME32_2;
-                    v1 = XXH_rotl32(v1, 13);
-                    v1 *= PRIME32_1;
-
-                    v2 += p.ReadUInt32() * PRIME32_2;
-                    v2 = XXH_rotl32(v2, 13);
-                    v2 *= PRIME32_1;
-
-                    v3 += p.ReadUInt32() * PRIME32_2;
-                    v3 = XXH_rotl32(v3, 13);
-                    v3 *= PRIME32_1;
-
-                    v4 += p.ReadUInt32() * PRIME32_2;
-                    v4 = XXH_rotl32(v4, 13);
-                    v4 *= PRIME32_1;
+                    v1 = XXH32_round(v1, p.ReadUInt32());
+                    v2 = XXH32_round(v2, p.ReadUInt32());
+                    v3 = XXH32_round(v3, p.ReadUInt32());
+                    v4 = XXH32_round(v4, p.ReadUInt32());
                 }
                 while (p.Position <= limit);
 
@@ -795,6 +773,13 @@ namespace Extensions.Data
 
             return h32;
         }
+        static private uint XXH32_round(uint seed, uint input)
+        {
+            seed += input * PRIME32_2;
+            seed  = XXH_rotl32(seed, 13);
+            seed *= PRIME32_1;
+            return seed;
+        }
 
         static internal void InternalResetState64(State64 state, ulong seed)
         {
@@ -821,25 +806,25 @@ namespace Extensions.Data
                 return ErrorCode.XXH_OK;
             }
 
-            if (state.memsize > 0)   /* some data left from previous update */
+            if (state.memsize > 0)   /* tmp buffer is full */
             {
                 Array.Copy(input, offset, state.mem64, state.memsize, 32 - state.memsize);
                 {
                     InputTextStream p64 = new InputTextStream(state.mem64, (int)state.memsize);
                     state.v1 += p64.ReadUInt64() * PRIME64_2;
-                    state.v1 = XXH_rotl64(state.v1, 31);
+                    state.v1  = XXH_rotl64(state.v1, 31);
                     state.v1 *= PRIME64_1;
 
                     state.v2 += p64.ReadUInt64() * PRIME64_2;
-                    state.v2 = XXH_rotl64(state.v2, 31);
+                    state.v2  = XXH_rotl64(state.v2, 31);
                     state.v2 *= PRIME64_1;
 
                     state.v3 += p64.ReadUInt64() * PRIME64_2;
-                    state.v3 = XXH_rotl64(state.v3, 31);
+                    state.v3  = XXH_rotl64(state.v3, 31);
                     state.v3 *= PRIME64_1;
 
                     state.v4 += p64.ReadUInt64() * PRIME64_2;
-                    state.v4 = XXH_rotl64(state.v4, 31);
+                    state.v4  = XXH_rotl64(state.v4, 31);
                     state.v4 *= PRIME64_1;
                 }
                 p.Skip(32 - (int)state.memsize);
@@ -856,21 +841,10 @@ namespace Extensions.Data
 
                 do
                 {
-                    v1 += p.ReadUInt64() * PRIME64_2;
-                    v1 = XXH_rotl64(v1, 31);
-                    v1 *= PRIME64_1;
-
-                    v2 += p.ReadUInt64() * PRIME64_2;
-                    v2 = XXH_rotl64(v2, 31);
-                    v2 *= PRIME64_1;
-
-                    v3 += p.ReadUInt64() * PRIME64_2;
-                    v3 = XXH_rotl64(v3, 31);
-                    v3 *= PRIME64_1;
-
-                    v4 += p.ReadUInt64() * PRIME64_2;
-                    v4 = XXH_rotl64(v4, 31);
-                    v4 *= PRIME64_1;
+                    v1 = XXH64_round(v1, p.ReadUInt64());
+                    v2 = XXH64_round(v2, p.ReadUInt64());
+                    v3 = XXH64_round(v3, p.ReadUInt64());
+                    v4 = XXH64_round(v4, p.ReadUInt64());
                 }
                 while (p.Position <= limit);
 
@@ -902,58 +876,35 @@ namespace Extensions.Data
                 ulong v4 = state.v4;
 
                 h64 = XXH_rotl64(v1, 1) + XXH_rotl64(v2, 7) + XXH_rotl64(v3, 12) + XXH_rotl64(v4, 18);
-
-                v1 *= PRIME64_2;
-                v1 = XXH_rotl64(v1, 31);
-                v1 *= PRIME64_1;
-                h64 ^= v1;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
-
-                v2 *= PRIME64_2;
-                v2 = XXH_rotl64(v2, 31);
-                v2 *= PRIME64_1;
-                h64 ^= v2;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
-
-                v3 *= PRIME64_2;
-                v3 = XXH_rotl64(v3, 31);
-                v3 *= PRIME64_1;
-                h64 ^= v3;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
-
-                v4 *= PRIME64_2;
-                v4 = XXH_rotl64(v4, 31);
-                v4 *= PRIME64_1;
-                h64 ^= v4;
-                h64 = h64 * PRIME64_1 + PRIME64_4;
+                h64 = XXH64_mergeRound(h64, v1);
+                h64 = XXH64_mergeRound(h64, v2);
+                h64 = XXH64_mergeRound(h64, v3);
+                h64 = XXH64_mergeRound(h64, v4);
             }
             else
             {
-                h64 = state.seed + PRIME64_5;
+                h64 = state.v3 + PRIME64_5;
             }
 
             h64 += state.total_len;
 
             while (p.Position + 8 <= bEnd)
             {
-                ulong k1 = p.ReadUInt64();
-                k1 *= PRIME64_2;
-                k1 = XXH_rotl64(k1, 31);
-                k1 *= PRIME64_1;
+                ulong k1 = XXH64_round(0, p.ReadUInt64());
                 h64 ^= k1;
-                h64 = XXH_rotl64(h64, 27) * PRIME64_1 + PRIME64_4;
+                h64  = XXH_rotl64(h64, 27) * PRIME64_1 + PRIME64_4;
             }
 
             if (p.Position + 4 <= bEnd)
             {
                 h64 ^= (ulong)(p.ReadUInt32()) * PRIME64_1;
-                h64 = XXH_rotl64(h64, 23) * PRIME64_2 + PRIME64_3;
+                h64  = XXH_rotl64(h64, 23) * PRIME64_2 + PRIME64_3;
             }
 
             while (p.Position < bEnd)
             {
                 h64 ^= p.ReadByte() * PRIME64_5;
-                h64 = XXH_rotl64(h64, 11) * PRIME64_1;
+                h64  = XXH_rotl64(h64, 11) * PRIME64_1;
             }
 
             h64 ^= h64 >> 33;
@@ -964,7 +915,20 @@ namespace Extensions.Data
 
             return h64;
         }
-
+        static private ulong XXH64_round(ulong acc, ulong input)
+        {
+            acc += input * PRIME64_2;
+            acc  = XXH_rotl64(acc, 31);
+            acc *= PRIME64_1;
+            return acc;
+        }
+        static private ulong XXH64_mergeRound(ulong acc, ulong val)
+        {
+            val  = XXH64_round(0, val);
+            acc ^= val;
+            acc  = acc * PRIME64_1 + PRIME64_4;
+            return acc;
+        }
 
         #region Custom types and functions
 
@@ -1046,7 +1010,7 @@ namespace Extensions.Data
                 if (EndOfStream)
                     throw new InvalidOperationException();
 
-                ulong value = BitConverter.ToUInt64(this.data, 0);
+                ulong value = BitConverter.ToUInt64(this.data, _position);
                 Skip(8);
                 return value;
             }

@@ -1,7 +1,7 @@
 ﻿/*
 Created by Wilhelm Liao on 2015-12-25.
 
-Copyright (c) 2015, Wilhelm Liao
+Copyright (c) 2015, Wilhelm Liao. (https://github.com/wilhelmliao/xxHash.NET)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

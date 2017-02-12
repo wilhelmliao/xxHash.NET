@@ -21,9 +21,9 @@ XXHash.State32 state = XXHash.CreateState32();      // create and initialize a x
                                                     //   xxHash require a xxH state object for keeping
                                                     //   data, seed, and vectors.
                                                     
-UpdateState32(state, stream);                       // puts the file stream into specified xxH state.
+XXHash.UpdateState32(state, stream);                // puts the file stream into specified xxH state.
 
-uint result = DigestState32(state);                 // compute the XXH32 hash value.
+uint result = XXHash.DigestState32(state);          // compute the XXH32 hash value.
 ```
 
 ###### Supported xxHash APIs: ######
@@ -63,6 +63,7 @@ using (HashAlgorithm xxhash = XXHash32.Create())
 
 
 #### Versioning ####
+[v1.0.1](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0.1) (equal to [xxHash v0.6.2](https://github.com/Cyan4973/xxHash/releases/tag/v0.6.2))
 [v1.0](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0) (equal to [xxHash r42](https://github.com/Cyan4973/xxHash/releases/tag/r42))
 
 -----------
