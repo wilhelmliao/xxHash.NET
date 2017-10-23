@@ -695,7 +695,7 @@ namespace Extensions.Data
             {
                 Array.Copy(input, offset, state.mem32, state.memsize, 16 - state.memsize);
                 {
-                    InputTextStream p32 = new InputTextStream(state.mem32, (int)state.memsize);
+                    InputTextStream p32 = new InputTextStream(state.mem32);
                     state.v1 = XXH32_round(state.v1, p32.ReadUInt32());
                     state.v2 = XXH32_round(state.v2, p32.ReadUInt32());
                     state.v3 = XXH32_round(state.v3, p32.ReadUInt32());
@@ -810,7 +810,7 @@ namespace Extensions.Data
             {
                 Array.Copy(input, offset, state.mem64, state.memsize, 32 - state.memsize);
                 {
-                    InputTextStream p64 = new InputTextStream(state.mem64, (int)state.memsize);
+                    InputTextStream p64 = new InputTextStream(state.mem64);
                     state.v1 += p64.ReadUInt64() * PRIME64_2;
                     state.v1  = XXH_rotl64(state.v1, 31);
                     state.v1 *= PRIME64_1;

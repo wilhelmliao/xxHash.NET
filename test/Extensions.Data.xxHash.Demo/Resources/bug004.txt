@@ -1,0 +1,5 @@
+The InputTextStream helper is initialized with an offset of "state.memsize" but the temp buffer must always be processed from the very beginning to the end.
+
+The exception can be reproduced by updating the state with a single byte first and then updating it again with a bigger file.
+
+Taking a look the code this is probably also true for InternalUpdateState32() but I have not tried to reproduce it with the 32 bit version.
