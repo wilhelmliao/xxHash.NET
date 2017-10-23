@@ -28,15 +28,15 @@ uint result = XXHash.DigestState32(state);          // compute the XXH32 hash va
 
 ###### Supported xxHash APIs: ######
 
-| original xxHash API name | XXH32             | XXH64             |
-|--------------------------|-------------------|-------------------|
-| XXH*nn*()                | XXH32()           | XXH64()           |
-| XXH*nn*_state_t          | State32           | State64           |
-| XXH*nn*_createState()    | CreateState32()   | CreateState64()   |
-| XXH*nn*_freeState()      | *Not implemented* | *Not implemented* |
-| XXH*nn*_reset()          | ResetState32()    | ResetState64()    |
-| XXH*nn*_update()         | UpdateState32()   | UpdateState64()   |
-| XXH*nn*_digest()         | DigestState32()   | DigestState64()   |
+| original xxHash API name | XXH32                    | XXH64                    |
+|--------------------------|--------------------------|--------------------------|
+| XXH*nn*()                | XXHash.XXH32()           | XXHash.XXH64()           |
+| XXH*nn*_state_t          | XXHash.State32           | XXHash.State64           |
+| XXH*nn*_createState()    | XXHash.CreateState32()   | XXHash.CreateState64()   |
+| XXH*nn*_freeState()      | *Not implemented*        | *Not implemented*        |
+| XXH*nn*_reset()          | XXHash.ResetState32()    | XXHash.ResetState64()    |
+| XXH*nn*_update()         | XXHash.UpdateState32()   | XXHash.UpdateState64()   |
+| XXH*nn*_digest()         | XXHash.DigestState32()   | XXHash.DigestState64()   |
 
 #### HashAlgorithm approach ####
 In addition, the assembly also provides `XXHash32` and `XXHash64` the two implementation classes of *System.Security.Cryptography.HashAlgorithm*.
