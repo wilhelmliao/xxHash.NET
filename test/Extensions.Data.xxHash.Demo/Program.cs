@@ -55,7 +55,7 @@ namespace Extensions.Data.xxHash.Demo
 
             XXHash.UpdateState64(state, stream);                // puts the file stream into specified xxH state.
 
-            ulong result = XXHash.DigestState64(state);          // compute the XXH32 hash value.
+            ulong result = XXHash.DigestState64(state);          // compute the XXH64 hash value.
 
             Console.WriteLine(result.ToString("x8"));
         }
