@@ -1,4 +1,5 @@
-xxHash.NET [![Build Status](https://travis-ci.org/wilhelmliao/xxHash.NET.svg?branch=master)](https://travis-ci.org/wilhelmliao/xxHash.NET) [![NuGet version](https://badge.fury.io/nu/xxHash.NET.svg)](https://badge.fury.io/nu/xxHash.NET)
+xxHash.NET [![Build Status](https://travis-ci.org/wilhelmliao/xxHash.NET.svg?branch=master)](https://travis-ci.org/wilhelmliao/xxHash.NET)  .NET Framework v4.0:[![NuGet version](https://badge.fury.io/nu/xxHash.NET.svg)](https://badge.fury.io/nu/xxHash.NET)  .NET core 2.0:[![NuGet version](https://badge.fury.io/nu/Extensions.Data.xxHash.core20.svg)](https://badge.fury.io/nu/Extensions.Data.xxHash.core20)
+
 ==========
 A .NET implementation of [xxHash](https://github.com/Cyan4973/xxHash). 
 
