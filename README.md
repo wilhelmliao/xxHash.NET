@@ -7,7 +7,7 @@ A .NET implementation of [xxHash](https://github.com/Cyan4973/xxHash).
 #### xxHash API approach ####
 *The following snippet demonstrates computing the `XXH32` hash value of the input string "test".*
 ```csharp
-byte[] input = Encoder.ASCII.GetBytes("test");      // the data to be hashed
+byte[] input = Encoding.ASCII.GetBytes("test");     // the data to be hashed
 uint result = XXHash.XXH32(input);                  // compute the XXH32 hash value. => '1042293711'
                                                     // NOTE:
                                                     //   you can specified seed as the second parameter.
@@ -43,7 +43,7 @@ In addition, the assembly also provides `XXHash32` and `XXHash64` the two implem
 
 *The following snippets demonstrate computing the `XXH32` hash value with HashAlgorithm approach.*
 ```csharp
-byte[] input = Encoder.ASCII.GetBytes("test");         // the data to be hashed.
+byte[] input = Encoding.ASCII.GetBytes("test");        // the data to be hashed.
 using (HashAlgorithm xxhash = XXHash32.Create())
 {
   byte[] result = xxhash.ComputeHash(input);           // compute the hash.
@@ -51,7 +51,7 @@ using (HashAlgorithm xxhash = XXHash32.Create())
 ```
 -- *or* --
 ```csharp
-byte[] input = Encoder.ASCII.GetBytes("test");         // the data to be hashed
+byte[] input = Encoding.ASCII.GetBytes("test");        // the data to be hashed
 using (HashAlgorithm xxhash = XXHash32.Create())
 {
   xxhash.TransformFinalBlock(input, 0, input.Length);
@@ -63,7 +63,7 @@ using (HashAlgorithm xxhash = XXHash32.Create())
 
 
 #### Versioning ####
- + [v1.0.1](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0.1) (equal to [xxHash v0.6.2](https://github.com/Cyan4973/xxHash/releases/tag/v0.6.2))
+ + [v1.0.2](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0.1) (equal to [xxHash v0.6.2](https://github.com/Cyan4973/xxHash/releases/tag/v0.6.2))
  + [v1.0](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0) (equal to [xxHash r42](https://github.com/Cyan4973/xxHash/releases/tag/r42))
 
 -----------
