@@ -63,8 +63,7 @@ using (HashAlgorithm xxhash = XXHash32.Create())
 
 
 #### Versioning ####
- + [v1.0.2](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0.1) (equal to [xxHash v0.6.2](https://github.com/Cyan4973/xxHash/releases/tag/v0.6.2))
- + [v1.0](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0) (equal to [xxHash r42](https://github.com/Cyan4973/xxHash/releases/tag/r42))
+ + [v1.0.2](https://github.com/wilhelmliao/xxHash.NET/releases/tag/v1.0.2) (equal to [xxHash v0.6.2](https://github.com/Cyan4973/xxHash/releases/tag/v0.6.2))
 
 -----------
 
