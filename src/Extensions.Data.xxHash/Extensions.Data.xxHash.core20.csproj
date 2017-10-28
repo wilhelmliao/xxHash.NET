@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.core20.cs" />
+    <Compile Include="XXHash.cs" />
+    <Compile Include="XXHash32.cs" />
+    <Compile Include="XXHash32CryptoServiceProvider.cs" />
+    <Compile Include="XXHash64.cs" />
+    <Compile Include="XXHash64CryptoServiceProvider.cs" />
+  </ItemGroup>
+</Project>
