@@ -6,6 +6,10 @@ A .NET implementation of [xxHash](https://github.com/Cyan4973/xxHash).
 
 ### Synopsis ###
 
+#### Demo
+  .NET Fiddle(https://dotnetfiddle.net/dbgN2y)
+
+
 #### xxHash API approach ####
 *The following snippet demonstrates computing the `XXH32` hash value of the input string "test".*
 ```csharp
