@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Data.xxHash", "src\Extensions.Data.xxHash\Extensions.Data.xxHash.csproj", "{C3A222A4-0BAD-4DC7-896C-B49FD29495AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Data.xxHash.UnitTest", "test\Extensions.Data.xxHash.UnitTest\Extensions.Data.xxHash.UnitTest.csproj", "{F6ABD358-0566-49ED-A51E-F1DC273A9EA6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Data.xxHash.Demo", "test\Extensions.Data.xxHash.Demo\Extensions.Data.xxHash.Demo.csproj", "{8DB65E86-D1A6-4881-8ED6-0B0FAE81F4F5}"
 EndProject
 Global
